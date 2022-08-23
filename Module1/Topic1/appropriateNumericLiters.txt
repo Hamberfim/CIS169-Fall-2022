@@ -1,0 +1,3 @@
+Numeric literals would be appropriate for fixed numbers like 32 degrees Fahrenheit or Zero Celsius for the freezing point of water.
+Mathematical constants like PI (3.14159265359) or the "Golden Ratio" (1.618033988749894...).
+Also, for numbers that infrequently change, like sales tax or interest rates.
