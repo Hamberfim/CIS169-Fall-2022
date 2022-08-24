@@ -25,8 +25,23 @@ namespace HelloWorldHamlin
         {
             // string variable 
             string professor = "Dr. M. E. Ruse";
-           // ouput with a little flair 
+
+            // ouput with a little flair 
             Console.WriteLine($"Hello World! Hello {professor}!");
+            Console.WriteLine(); // space in output
+
+            // Debug
+            string name = "Anthony Hamlin"; // enter your name here           
+            string favoriteColor = "cerulean"; // change to your favorite
+            string favoriteFood = "raspberries"; // change if you wish
+            Console.WriteLine("Name: " + name);
+            Console.Write("Favorite thing to eat: " + favoriteFood);
+            Console.WriteLine(" but it's not even " + favoriteColor + ".");
+            int quantity = 5;
+            decimal price = 3.99M;
+            decimal totalCost = quantity * price;
+            Console.WriteLine("It will cost " + totalCost);
+
         }
     }
 }
