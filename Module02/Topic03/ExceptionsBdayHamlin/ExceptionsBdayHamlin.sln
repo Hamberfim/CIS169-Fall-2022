@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32802.440
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionsBdayHamlin", "ExceptionsBdayHamlin.csproj", "{D28F8FCE-D2FC-469A-B8AE-6644BD28AECB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D28F8FCE-D2FC-469A-B8AE-6644BD28AECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28F8FCE-D2FC-469A-B8AE-6644BD28AECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28F8FCE-D2FC-469A-B8AE-6644BD28AECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28F8FCE-D2FC-469A-B8AE-6644BD28AECB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9BF7DDD-1A27-426D-A651-A80BABE9B977}
+	EndGlobalSection
+EndGlobal
