@@ -1,0 +1,14 @@
+Input Validation Practice - example* - wendy's Feast of Legends Characater Sheet 
+
+It is important to validate user input to make your program robust. Instead of exiting with a confusing (to the user) error message, you should print an error message explaining the problem. It's often best to continue the program when an input error is encountered.
+
+Write a Console App that builds a character sheet for gaming. Since we don't have GUI building in our toolbox yet, you can print out a paragraph of the character.
+
+For character building, individuals roll dice to r to set values. When you run the code, you can select random numbers in the appropriate value range to test your code. Don't forget to also select improper input to test your input validation.
+The code will first prompt the user for their character name. Next, it will ask the user for their character information from the assumed dice roll. (Later when you learn about random numbers and loops, you can remove this part of user input and generate the character numbers with simulating the roll of the dice.)
+
+Business Logic: Include the following characteristics: charm, strength and shield. Charm is a number in the range 10 to 20. Strength is between 0 and 40. Shield is in the range 1 to 10.
+
+Your program must use TryParse and compound conditionals to validate the input. If the range is incorrect, select a valid value for the user (lowest, median, or any number).
+
+See attached character sheet as a reference if you have not seen any Dungeons and Dragons  type games for Wendy's Free D&D game. * Wendys_Feast_Of_Legends_Character_Sheets.pdf 
