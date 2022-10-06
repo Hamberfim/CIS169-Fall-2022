@@ -1,0 +1,4 @@
+fuzzy
+heavy
+flimsy
+ablaze

@@ -166,8 +166,17 @@ namespace Methods
             }
 
             //Average the scores
-            average = (decimal)total / scoreCount;
-            Console.WriteLine($"The score average is {average:f2}");
+
+            try
+            {
+                average = (decimal)total / scoreCount;
+                Console.WriteLine($"The score average is {average:f2}");
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message + " Can not average score. Exiting!");
+            }
+
 
             // Submit your Methods/Program.cs file with the Academic Honesty Header included and MethodsTests/UnitTest1.cs
         }
