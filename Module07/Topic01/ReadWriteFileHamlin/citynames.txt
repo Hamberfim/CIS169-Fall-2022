@@ -1,0 +1,17 @@
+Omaha
+Seattle
+Portland
+Ames
+Minneapolis
+Newton
+Charleston
+Willington
+Miami
+Austin
+Jacksonville
+Phoenix
+Indianapolis
+Chicago
+Ankeny
+Des Moines
+
