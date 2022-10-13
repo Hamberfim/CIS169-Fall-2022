@@ -108,21 +108,21 @@ namespace StudentStructure
                     }
                     else
                     {
-                        Console.WriteLine("School year input must be a integer. Program existing.");
+                        Console.WriteLine("School year input must be a integer. Program exiting.");
                         Environment.Exit(0);
                     }
                 }
                 else
                 {
 
-                    Console.WriteLine("Student id input must be a integer. Program existing.");
+                    Console.WriteLine("Student id input must be a integer. Program exiting.");
                     Environment.Exit(0);
                 }
 
             }
             else
             {
-                Console.WriteLine($"\nFirst name, last name and school major must to be provided and can not contain numbers. Program existing. ");
+                Console.WriteLine($"\nFirst name, last name and school major must to be provided and can not contain numbers. Program exiting. ");
                 Environment.Exit(0);
             }
 

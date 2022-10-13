@@ -29,7 +29,15 @@ namespace JaggedArraysHamlin
 
         public static int Min(int[] distance)
         {
-            int minimumDistance = distance.Min();
+            int minimumDistance = distance[0];
+            for (int i = 0; i < distance.Length; i++)
+            {
+                if (distance[i] < minimumDistance)
+                {
+                    minimumDistance = distance[i];
+                }
+            }
+            // int minimumDistance = distance.Min();  array method
 
             return minimumDistance;
         }
@@ -39,7 +47,15 @@ namespace JaggedArraysHamlin
 
         public static int Max(int[] distance)
         {
-            int maximumDistance = distance.Max();
+            int maximumDistance = distance[0];
+            for (int i = 0; i < distance.Length; i++)
+            {
+                if (distance[i] > maximumDistance)
+                {
+                    maximumDistance = distance[i];
+                }
+            }
+            // int maximumDistance = distance.Max();  array method
             return maximumDistance;
         }
 
