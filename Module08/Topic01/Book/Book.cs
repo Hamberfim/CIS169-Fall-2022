@@ -39,7 +39,7 @@ namespace Book
         private string _title;
         private string _keywords;
         private string _pubDate;
-        private string _ISBN;
+        private long _ISBN;
 
         // no-arg constructor
         public Book()
@@ -48,11 +48,11 @@ namespace Book
             Title = "";
             Keywords = "";
             PubDate = "";
-            ISBN = "";
+            ISBN = 0;
         }
 
         // constructor 
-        public Book(string author, string title, string keywords, string pubDate, string ISBN)
+        public Book(string author, string title, string keywords, string pubDate, long ISBN)
         {
             Author = author;
             Title = title;
@@ -66,11 +66,11 @@ namespace Book
         public string Title { get => _title; set => _title = value; }
         public string Keywords { get => _keywords; set => _keywords = value; }
         public string PubDate { get => _pubDate; set => _pubDate = value; }
-        public string ISBN { get => _ISBN; set => _ISBN = value; }
+        public long ISBN { get => _ISBN; set => _ISBN = value; }
 
         public override string ToString()
         {
-            return ("Author: " + Author + ", Title: " + Title + " Keywords: " + Keywords + ", Pub Date: " + PubDate + ", ISBN: " + ISBN);
+            return (Title + ", " + Author + ", " + PubDate + ", Keywords: " + Keywords + ", ISBN: " + ISBN);
         }
     }
 }

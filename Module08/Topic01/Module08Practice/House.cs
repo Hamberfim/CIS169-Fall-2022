@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module08Practice
+namespace Module08House
 {
     public class House
     {
-        // properties
+        // Properties/Fields
         private string _address;
         private int _numberBathrooms;
         private int _numberBedrooms;
@@ -29,27 +29,15 @@ namespace Module08Practice
             _numberBedrooms = numberBedrooms;
         }
 
-        public string Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
+        //Properties with public access to set and get values 
+        public string Address { get => _address; set => _address = value; }
+        public int NumberBedrooms { get => _numberBedrooms; set => _numberBedrooms = value; }
+        public int NumberBathrooms { get => _numberBathrooms; set => _numberBathrooms = value; }
 
-        public int NumberBathrooms
-        {
-            get { return _numberBathrooms; }
-            set { _numberBathrooms = value; }
-        }
-
-        public int NumberBedrooms
-        {
-            get { return _numberBedrooms; }
-            set { _numberBedrooms = value; }
-        }
-
+        // ToString override for display
         public override string ToString()
         {
-            return ("House at " + Address + " has " + NumberBedrooms + " bedrooms and " + NumberBathrooms + " bathrooms.");
+            return ("House at " + Address + " has " + NumberBedrooms + " bedroom(s) and " + NumberBathrooms + " bathroom(s).");
         }
 
     }

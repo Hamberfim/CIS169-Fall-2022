@@ -24,8 +24,27 @@ namespace Book
         static void Main(string[] args)
         {
             // driver for Book class
-            Book ruralHistory = new("Sarah Farmer", "Rural Inventions after 1945", "French History, History, Essay", "March 18, 2020", "978-0190079079");
-            Console.WriteLine(ruralHistory);
+            // Object one:
+            // C# in Depth: Use the default no - arg default constructor. Set the values using properties.
+            // details: Jon Skeet, C# in Depth, C#, programming, Mar 23, 2019, 9781617294532
+            Book skeet = new Book();
+            skeet.Author = "Jon Skeet";
+            skeet.Title = "C# in Depth";
+            skeet.Keywords = "C#, programming";
+            skeet.PubDate = "Mar 23, 2019";
+            skeet.ISBN = 9781617294532;
+
+            // Object two:
+            // murach's ASP.NET Core MVC: Use the non - default constructor and set values for attribute, except include an incorrect author.
+            // Use the set to change the author property to the correct author.
+            // details: murach's ASP.NET Core MVC, Mary Delamater and Joel Murach, January 2020, keywords: C#, ASP.NET, MVC, ISBN 978-1-943872-49-7
+            Book murach = new Book("Billy Williams", "Murach's ASP.NET Core MVC", "C#, ASP.NET, MVC", "January 2020", 9781943872497);
+            murach.Author = "Mary Delamater and Joel Murach";
+            // Display the information for both books.
+            Console.WriteLine(skeet);
+            Console.WriteLine(murach);
+
+            Console.WriteLine();  // space in output
         }
     }
 }
