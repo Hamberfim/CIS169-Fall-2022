@@ -37,7 +37,15 @@ namespace Module9
         private int _zipcode;
 
         // Constructors
-        public Address() { }
+        public Address()
+        {
+            _addressNumber = 0;
+            _addressStreet = "unknown";
+            _addressAptNum = "unknown";
+            _city = "unknown";
+            _state = "unknown";
+            _zipcode = 0;
+        }
         public Address(int addressNumber, string addressStreet, string addressAptNum, string city, string state, int zipcode)
         {
             _addressNumber = addressNumber;
