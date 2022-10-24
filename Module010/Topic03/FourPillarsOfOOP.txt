@@ -1,0 +1,5 @@
+The four pillars of OOP are Abstraction, Encapsulation, Inheritance and Polymorphism.
+Abstraction basically means to only show the necessary details that the user of the object will need while hiding other details, like the logic from the user. An abstract class must be inherited from another class for an object to be created from it.
+Encapsulation is when you take data fields and methods, etc., and make them private or protected to limit the access to them from outside the class that might inadvertently change a member of the class object.
+Inheritance is a way to pass or acquire the members (fields, methods, etc.) of a parent class into a child class. This reduces duplication and allows for reuse of code.
+Polymorphism is a way to take inherited methods and utilize them in the child class somewhat differently than the original functionality or behavior of the method in the parent class.
