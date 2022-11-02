@@ -49,10 +49,10 @@ namespace InheritanceConsoleApp
             return base.MakeNamePlate();
         }
 
-        public override int CalculateAge()
-        {
-            return base.CalculateAge();
-        }
+        //public override int CalculateAge()
+        //{
+        //    return base.CalculateAge();
+        //}
 
         public virtual decimal CalcuatePay()
         {

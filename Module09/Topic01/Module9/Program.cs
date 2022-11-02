@@ -17,6 +17,12 @@ namespace Module9
             testHouse.NumberBathrooms = 1;
             Console.WriteLine(testHouse.ToString());
 
+            Console.WriteLine();  // space in output
+            // test empty apt return -- assuming a form with an empty string input for apt
+            House testHouseNoApt = new House(555, "Mill RD", "", "Turnip Town", "Iowa", 55555);
+            testHouseNoApt.NumberBedrooms = 3;
+            testHouseNoApt.NumberBathrooms = 1;
+            Console.WriteLine(testHouseNoApt.ToString());
         }
     }
 }

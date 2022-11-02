@@ -33,8 +33,11 @@ namespace InheritanceConsoleApp
         // Constructors
         public Student()
         {
-            _firstName = "";
-            _lastName = "";
+        }
+        public Student(string fname, string lname)
+        {
+            FirstName = fname;
+            LastName = lname;
             _dateOfBirth = new DateTime(1920, 01, 01);
             _studentID = 0;
         }
@@ -46,6 +49,7 @@ namespace InheritanceConsoleApp
             _dateOfBirth = DOB;
             _studentID = ID;
         }
+
 
         // Properties
         public string FirstName { get => _firstName; set => _firstName = value; }

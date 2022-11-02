@@ -92,7 +92,15 @@ namespace Module9
         // add any necessary methods
         public override string ToString()
         {
-            return $"{AddressNumber} {AddressStreet} {AddressAptNum}\n{City}, {State} {Zipcode}";
+            if (String.IsNullOrEmpty(AddressAptNum))
+            {
+                return $"{AddressNumber} {AddressStreet}\n{City}, {State} {Zipcode}";
+            }
+            else
+            {
+                return $"{AddressNumber} {AddressStreet} {AddressAptNum}\n{City}, {State} {Zipcode}";
+            }
+
         }
     }
 }
