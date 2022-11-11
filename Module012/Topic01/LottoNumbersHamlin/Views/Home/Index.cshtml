@@ -1,0 +1,74 @@
+﻿@model LottoModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Anthony Hamlin" />
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 12px;
+        }
+
+        label {
+            display: inline-block;
+            padding-right: 2px;
+        }
+
+        div {
+            margin-bottom: 4px;
+        }
+
+        .tabInContent {
+            margin-left: 1em;
+        }
+
+        .notificationColor {
+            color: darkblue;
+        }
+
+        .warning {
+            color: darkred;
+        }
+    </style>
+    <title>Lottery Numbers</title>
+</head>
+<body>
+    <h1 class="notificationColor">Lotto Number Generator</h1>
+    <div class="tabInContent">
+        <form asp-action="Index" method="post">
+            <div class="warning" asp-validation-summary="All"></div>
+            <div>
+                <label asp-for="FirstNumber" aria-label="Your First Number">First Number:</label>
+                <input asp-for="FirstNumber" name="FirstNumber" id="FirstNumber" required />
+            </div>
+            <div>
+                <label asp-for="SecondNumber" aria-label="Your Second Number">Second Number:</label>
+                <input asp-for="SecondNumber" name="SecondNumber" id="SecondNumber" required />
+            </div>
+            <div>
+                <label asp-for="ThirdNumber" aria-label="Your Third Number">Third Number:</label>
+                <input asp-for="ThirdNumber" name="ThirdNumber" id="ThirdNumber" required />
+            </div>
+            <div>
+                <label asp-for="FourthNumber" aria-label="Your Fourth Number">Fourth Number:</label>
+                <input asp-for="FourthNumber" name="FourthNumber" id="FourthNumber" required />
+            </div>
+            <div>
+                <label asp-for="MatchingNumbers" aria-label="Your Matching Numbers">Numbers Matching :</label>
+                <input asp-for="MatchingNumbers" name="MatchingNumbers" id="MatchingNumbers" value="@ViewBag.MatchingNumbers.ToString()" readonly />
+            </div>
+            <div>
+                @Html.Raw(ViewBag.message)
+            </div>
+            <button type="submit">Check Ticket</button>
+            <a asp-action="Index">Clear</a>
+        </form>
+    </div>
+</body>
+</html>
