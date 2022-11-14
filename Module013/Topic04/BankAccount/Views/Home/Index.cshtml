@@ -1,0 +1,79 @@
+﻿@model BankAccount
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bank Account Web App</title>
+    <style>
+        body {
+            margin-left: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2, h3 {
+            color: darkblue;
+        }
+
+        div {
+            margin-bottom: 4px;
+        }
+
+        label {
+            padding-right: 2px;
+        }
+
+        .warning {
+            color: darkred;
+        }
+
+        .button {
+            margin-left: 0;
+            margin-right: 2px;
+            background-color: #008CBA;
+            border-radius: 3px;
+            border: none;
+            color: white;
+            padding: 7px 9px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+            /**/
+            .button:hover {
+                cursor: pointer;
+                background-color: #049ed1;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <h1>Bank Account</h1>
+    <form asp-action="Index" method="post">
+        <div class="warning" asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="AccountNumber">Account Number:</label>
+            <input asp-for="AccountNumber" required />
+        </div>
+        <div>
+            <label asp-for="Balance">Account Balance:</label>
+            <input asp-for="Balance" required />
+        </div>
+        <div>
+            <label asp-for="Amount">Withdraw Amount:</label>
+            <input asp-for="Amount" required>
+        </div>
+        <div>
+            <label>Ending Balance:</label>
+            <input value="@ViewBag.EndingBalance.ToString("C2")" readonly />
+        </div>
+        <button class="button" type="submit">Withdraw</button>
+        <a asp-action="Index">Clear</a>
+    </form>
+</body>
+</html>
