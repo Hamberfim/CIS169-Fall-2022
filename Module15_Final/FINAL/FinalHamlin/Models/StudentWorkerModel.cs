@@ -49,10 +49,11 @@ namespace FinalHamlin.Models
             _hours = hours;
         }
 
+        // I'm not throwing errors - I'm also not allowing a "Zero Paycheck" since I can control what is being pass into the application from the form
         // setters/getters - validate form input
         [Required(ErrorMessage = "Enter a pay rate. Must be between 7.25 - 14.75.")]
         [Display(Name = "Pay Rate")]
-        [Range(7.25, 14.75)]  // data type requires double for CONSTANT use rather than decimal 
+        [Range(7.25, 14.75)]  // data type requires double for CONSTANT use in 'Range' rather than decimal 
         public decimal? Pay
         {
             get { return _pay; }
