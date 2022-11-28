@@ -4,11 +4,10 @@
 }
 
 <div class="text-left">
-    <div class="display-4 text-primary mb-3">Student Worker </div>
     <div class="card">
         <div class="card-body">
             <div class="card-text">
-                <h3 class="card-title text-primary mt-0 mb-1">Weekly Salary Form</h3>
+                <h3 class="card-title text-primary mt-0 mb-1">Student Worker - Weekly Salary Form</h3>
                 <h6 class="text-muted mb-3"><em>Get an estimate of your expected salary before tax.</em></h6>
                 <form asp-action="Index" method="post">
                     <div class="text-danger" asp-validation-summary="All"></div>
@@ -19,6 +18,10 @@
                     <div class="form-group">
                         <label asp-for="LastName">Last Name: </label>
                         <input type="text" class="form-control" asp-for="LastName" placeholder="Enter Your Last Name" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StudentID">Student ID: </label>
+                        <input type="number" class="form-control" asp-for="StudentID" placeholder="Enter Your Student ID (i.e, 900XXXXXX)" />
                     </div>
                     <div class="form-group">
                         <label asp-for="Pay">Pay Rate: </label>

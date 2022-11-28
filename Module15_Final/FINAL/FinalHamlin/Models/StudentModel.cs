@@ -34,6 +34,7 @@ namespace FinalHamlin.Models
         private const int ID_LOW = 900000000;
         private const int ID_HIGH = 900999999;
 
+
         // constructor
         public StudentModel()
         {
@@ -52,18 +53,32 @@ namespace FinalHamlin.Models
 
         // setters/getters - validate form input
         [Display(Name = "First Name")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "First Name must be at least 3 characters and only letters.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "First Name must be letters only.")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "First Name can not be left blank.")]
         [StringLength(60, MinimumLength = 3)]
         public string FirstName { get => _firstName; set => _firstName = value; }
 
         [Display(Name = "Last Name")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Last Name must be at least 3 characters and only letters.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Last Name must be letters only.")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Last Name can not be left blank.")]
         [StringLength(60, MinimumLength = 3)]
         public string LastName { get => _lastName; set => _lastName = value; }
 
-        public int StudentID { get => _studentID; set => _studentID = value; }  // not sure why we have this- "display student name and the weekly salary." 
+        [Display(Name = "Student ID")]
+        [Required(ErrorMessage = "Student ID can not be left blank.")]
+        [Range(ID_LOW, ID_HIGH, ErrorMessage = "Student ID should conform to {1}-{2}")]
+        public int? StudentID
+        {
+            get { return _studentID; }
+            set
+            {
+                if (value < ID_LOW || value > ID_HIGH)
+                {
+                    _studentID = 0;
+                }
+                _studentID = Convert.ToInt32(value);
+            }
+        }
 
         // will be overloaded/override in the Student Worker Model
         public virtual decimal WeeklySalary()

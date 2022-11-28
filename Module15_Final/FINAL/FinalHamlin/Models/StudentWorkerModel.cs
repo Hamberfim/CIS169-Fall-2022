@@ -28,6 +28,13 @@ namespace FinalHamlin.Models
         private decimal _pay = 0.0m;
         private decimal _hours = 0m;
 
+        // constants - no magic numbers
+        private const decimal PAY_RATE_LOW = 7.25m;
+        private const decimal PAY_RATE_HIGH = 14.75m;
+        private const decimal HOURS_LOW = 1m;
+        private const decimal HOURS_HIGH = 15m;
+
+
         // constructor
         public StudentWorkerModel()
         {
@@ -35,7 +42,7 @@ namespace FinalHamlin.Models
             _hours = 0;
         }
 
-        // constructor
+        // constructor with base model
         public StudentWorkerModel(decimal pay, decimal hours, string firstName2, string lastName2, int studentID2) : base(firstName2, lastName2, studentID2)
         {
             _pay = pay;
@@ -45,13 +52,13 @@ namespace FinalHamlin.Models
         // setters/getters - validate form input
         [Required(ErrorMessage = "Enter a pay rate. Must be between 7.25 - 14.75.")]
         [Display(Name = "Pay Rate")]
-        [Range(7.25, 14.75)]
+        [Range(7.25, 14.75)]  // data type requires double for CONSTANT use rather than decimal 
         public decimal? Pay
         {
             get { return _pay; }
             set
             {
-                if (value < 7.25m || value > 14.75m)
+                if (value < PAY_RATE_LOW || value > PAY_RATE_HIGH)
                 {
                     _pay = 0.0m;
                 }
@@ -67,7 +74,7 @@ namespace FinalHamlin.Models
             get { return _hours; }
             set
             {
-                if (value < 1 || value > 15)
+                if (value < HOURS_LOW || value > HOURS_HIGH)
                 {
                     _hours = 0m;
                 }
@@ -88,3 +95,47 @@ namespace FinalHamlin.Models
         }
     }
 }
+
+/** 
+ * 
+Final Project Specifications
+
+    Complete the project
+        MVC Web App Class is StudentWorkerModel (inherited from Student) with properties name, id, hourly pay, hours worked, and method weeklySalary(). Notes some properties might belong in the Student class. Make sure your method calculates the weekly salary using the class methods, there is no need to pass any values to the method. Set the values in the code, and on the page, display student name and the weekly salary.
+            Must be a Web Application
+                GUI components:
+                    Button
+                    Clear
+                    User Input for necessary information in your model
+                Model should include input validation and print to GUI when non-numeric input or invalid input is input
+            Documentation
+                Comments
+                Header must include problem description
+            Must include at least 2 classes
+                Demonstrate inheritance
+                Demonstrate method overloading
+                Demonstrate method overriding
+                Follow naming conventions
+                Follw our class style (Constructors, Properties, methods, etc) 
+            Must include Unit tests with good coverage (include edge cases and use cases)
+
+Test your StudentWorker Model:
+Business logic: Workers can work 1 to 15 per week and pay rate starts at $7.25 and can be up to $14.75 per hour. If there is an issue, pay should be returned as zero. The administrator will check for zero paychecks to fix errors and re-run payroll for those individuals. NOTE: Think about if it makes sense to throw exceptions in the class. Do you know how to handle those in the Web App view? It might be better to avoid them and use input validation to handle input. What can you set the salary to if there is bad input? 
+Add Unit Tests:
+
+    Use appropiate test names
+    Follow Unit Testing style shown in class
+        Use variables actual and expected (when needed)
+        Use comments to create code blocks appropriately
+            // Arrange
+            // Act
+            // Assert 
+
+    Test 1. Invalid hours worked (too low)
+    Test 2. Invalid hours worked (too high)
+    Test 3. Invalid hourly salary (too low)
+    Test 4. Invalid hourly salary (too high)
+    Test 5. Valid test 
+
+Submit a zip file of the Solution (There should be a two projects) names FinalYourLastName.zip
+ */
