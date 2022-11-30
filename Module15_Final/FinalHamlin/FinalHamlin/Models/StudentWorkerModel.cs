@@ -21,84 +21,110 @@ using System.ComponentModel.DataAnnotations;
 ***************************************************************/
 namespace FinalHamlin.Models
 {
-    public class StudentModel
+    // inherit from the Student Model
+    public class StudentWorkerModel : StudentModel
     {
-
-        // Properties
-        private string _firstName;
-        private string _lastName;
-        private int _studentID;
+        // properties
+        private decimal _pay = 0.0m;
+        private decimal _hours = 0m;
 
         // constants - no magic numbers
-        private const int ID_LENGTH = 9;
-        private const int ID_LOW = 900000000;
-        private const int ID_HIGH = 900999999;
+        private const decimal PAY_RATE_LOW = 7.25m;
+        private const decimal PAY_RATE_HIGH = 14.75m;
+        private const decimal HOURS_LOW = 1.0m;
+        private const decimal HOURS_HIGH = 15.0m;
 
 
         // constructor
-        public StudentModel()
+        public StudentWorkerModel()
         {
-            _firstName = "unknown";
-            _lastName = "unknown";
-            _studentID = 0;
+            _pay = 0.0m;
+            _hours = 0.0m;
         }
 
-        // constructor
-        public StudentModel(string firstName, string lastName, int studentID)
+        // constructor with base model
+        public StudentWorkerModel(decimal pay, decimal hours, string firstName2, string lastName2, int studentID2) : base(firstName2, lastName2, studentID2)
         {
-            _firstName = firstName;
-            _lastName = lastName;
-            _studentID = studentID;
+            if (pay < PAY_RATE_LOW || pay > PAY_RATE_HIGH)
+            {
+                _pay = 0m;
+            }
+            else
+            {
+                _pay = pay;
+            }
+
+
+            if (hours < HOURS_LOW || hours > HOURS_HIGH)
+            {
+                _hours = 0.0m;
+            }
+            else
+            {
+                _hours = hours;
+            }
+
         }
 
+        // I'm not throwing errors 
         // setters/getters - validate form input
-        [Display(Name = "First Name")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "First Name must be letters only.")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "First Name can not be left blank.")]
-        [StringLength(60, MinimumLength = 3)]
-        public string FirstName { get => _firstName; set => _firstName = value; }
-
-        [Display(Name = "Last Name")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Last Name must be letters only.")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Last Name can not be left blank.")]
-        [StringLength(60, MinimumLength = 3)]
-        public string LastName { get => _lastName; set => _lastName = value; }
-
-        [Display(Name = "Student ID")]
-        [Required(ErrorMessage = "Student ID can not be left blank.")]
-        [Range(ID_LOW, ID_HIGH, ErrorMessage = "Student ID should conform to {1}-{2}")]
-        public int? StudentID
+        [Required(ErrorMessage = "Enter a pay rate. Must be between 7.25 - 14.75.")]
+        [Display(Name = "Pay Rate")]
+        [Range(7.25, 14.75)]  // data type requires double for CONSTANT use in 'Range' rather than decimal 
+        public decimal? Pay
         {
-            get { return _studentID; }
+            get { return _pay; }
             set
             {
-                if (value < ID_LOW || value > ID_HIGH)
+                if (value < PAY_RATE_LOW || value > PAY_RATE_HIGH)
                 {
-                    _studentID = 0;
+                    _pay = 0m;
                 }
-                _studentID = Convert.ToInt32(value);
+                else
+                {
+                    _pay = Convert.ToDecimal(value);
+                }
+
             }
         }
 
-        // will be overloaded/override in the Student Worker Model
-        public virtual decimal WeeklySalary()
+        [Required(ErrorMessage = "Enter hours worked. Must be between 1 - 15.")]
+        [Display(Name = "Hours Worked")]
+        [Range(1.0, 15.0)]
+        public decimal? Hours
         {
-            return 0.0m;
+            get { return _hours; }
+            set
+            {
+                if (value < HOURS_LOW || value > HOURS_HIGH)
+                {
+                    _hours = 0m;
+                }
+                else
+                {
+                    _hours = Convert.ToDecimal(value);
+                }
+
+            }
         }
 
-        // ToString override
+        // overloaded/override the StudentModel
+        public override decimal WeeklySalary()
+        {
+            return Convert.ToDecimal(Pay) * Convert.ToDecimal(Hours);
+        }
+
+        // override the ToString in theStudentModel
         public override string ToString()
         {
-            return base.ToString() + ": Name: " + _firstName + " " + _lastName;
+            return base.ToString() + " Weakly Salary: " + WeeklySalary();
         }
-
     }
 }
 
 /** 
  * 
 Final Project Specifications
-
     Complete the project
         MVC Web App Class is StudentWorkerModel (inherited from Student) with properties name, id, hourly pay, hours worked, and method weeklySalary(). Notes some properties might belong in the Student class. Make sure your method calculates the weekly salary using the class methods, there is no need to pass any values to the method. Set the values in the code, and on the page, display student name and the weekly salary.
             Must be a Web Application
@@ -117,11 +143,9 @@ Final Project Specifications
                 Follow naming conventions
                 Follw our class style (Constructors, Properties, methods, etc) 
             Must include Unit tests with good coverage (include edge cases and use cases)
-
 Test your StudentWorker Model:
 Business logic: Workers can work 1 to 15 per week and pay rate starts at $7.25 and can be up to $14.75 per hour. If there is an issue, pay should be returned as zero. The administrator will check for zero paychecks to fix errors and re-run payroll for those individuals. NOTE: Think about if it makes sense to throw exceptions in the class. Do you know how to handle those in the Web App view? It might be better to avoid them and use input validation to handle input. What can you set the salary to if there is bad input? 
 Add Unit Tests:
-
     Use appropiate test names
     Follow Unit Testing style shown in class
         Use variables actual and expected (when needed)
@@ -129,12 +153,10 @@ Add Unit Tests:
             // Arrange
             // Act
             // Assert 
-
     Test 1. Invalid hours worked (too low)
     Test 2. Invalid hours worked (too high)
     Test 3. Invalid hourly salary (too low)
     Test 4. Invalid hourly salary (too high)
     Test 5. Valid test 
-
 Submit a zip file of the Solution (There should be a two projects) names FinalYourLastName.zip
  */

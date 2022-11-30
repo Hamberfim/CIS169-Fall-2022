@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 * IDE          : Visual Studio 2019 Community
 * Copyright    : This is my own original work based on
 *                      specifications issued by our instructor
-* Description  : This program is an MVC Web Application with a StudentWorkerModel that inherits from Student
+* Description  : This is the controller for the MVC Web Application with a StudentWorkerModel that inherits from Student
 * Academic Honesty: I attest that this is my original work.
 * I have not used unauthorized source code, either modified or
 * unmodified. I have not given other fellow student(s) access

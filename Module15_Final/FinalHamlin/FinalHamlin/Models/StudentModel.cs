@@ -13,7 +13,7 @@ using System.ComponentModel.DataAnnotations;
 * IDE          : Visual Studio 2019 Community
 * Copyright    : This is my own original work based on
 *                      specifications issued by our instructor
-* Description  : This program is an MVC Web Application with a StudentWorkerModel that inherits from Student
+* Description  : This is the StudentModel for MVC Web Application that StudentWorkerModel will inherit from 
 * Academic Honesty: I attest that this is my original work.
 * I have not used unauthorized source code, either modified or
 * unmodified. I have not given other fellow student(s) access
@@ -21,79 +21,77 @@ using System.ComponentModel.DataAnnotations;
 ***************************************************************/
 namespace FinalHamlin.Models
 {
-    // inherit from the Student Model
-    public class StudentWorkerModel : StudentModel
+    public class StudentModel
     {
-        // properties
-        private decimal _pay = 0.0m;
-        private decimal _hours = 0m;
+
+        // Properties
+        private string _firstName;
+        private string _lastName;
+        private int _studentID;
 
         // constants - no magic numbers
-        private const decimal PAY_RATE_LOW = 7.25m;
-        private const decimal PAY_RATE_HIGH = 14.75m;
-        private const decimal HOURS_LOW = 1m;
-        private const decimal HOURS_HIGH = 15m;
+        private const int ID_LENGTH = 9;
+        private const int ID_LOW = 900000000;
+        private const int ID_HIGH = 900999999;
 
 
         // constructor
-        public StudentWorkerModel()
+        public StudentModel()
         {
-            _pay = 0.0m;
-            _hours = 0;
+            _firstName = "unknown";
+            _lastName = "unknown";
+            _studentID = 0;
         }
 
-        // constructor with base model
-        public StudentWorkerModel(decimal pay, decimal hours, string firstName2, string lastName2, int studentID2) : base(firstName2, lastName2, studentID2)
+        // constructor
+        public StudentModel(string firstName, string lastName, int studentID)
         {
-            _pay = pay;
-            _hours = hours;
+            _firstName = firstName;
+            _lastName = lastName;
+            _studentID = studentID;
         }
 
-        // I'm not throwing errors 
         // setters/getters - validate form input
-        [Required(ErrorMessage = "Enter a pay rate. Must be between 7.25 - 14.75.")]
-        [Display(Name = "Pay Rate")]
-        [Range(7.25, 14.75)]  // data type requires double for CONSTANT use in 'Range' rather than decimal 
-        public decimal? Pay
+        [Display(Name = "First Name")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "First Name must be letters only.")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "First Name can not be left blank.")]
+        [StringLength(60, MinimumLength = 3)]
+        public string FirstName { get => _firstName; set => _firstName = value; }
+
+        [Display(Name = "Last Name")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Last Name must be letters only.")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Last Name can not be left blank.")]
+        [StringLength(60, MinimumLength = 3)]
+        public string LastName { get => _lastName; set => _lastName = value; }
+
+        [Display(Name = "Student ID")]
+        [Required(ErrorMessage = "Student ID can not be left blank.")]
+        [Range(ID_LOW, ID_HIGH, ErrorMessage = "Student ID should conform to {1}-{2}")]
+        public int? StudentID
         {
-            get { return _pay; }
+            get { return _studentID; }
             set
             {
-                if (value < PAY_RATE_LOW || value > PAY_RATE_HIGH)
+                if (value < ID_LOW || value > ID_HIGH)
                 {
-                    _pay = 0m;
+                    _studentID = 0;
                 }
-                _pay = Convert.ToDecimal(value);
+                _studentID = Convert.ToInt32(value);
             }
         }
 
-        [Required(ErrorMessage = "Enter hours worked. Must be between 1 - 15.")]
-        [Display(Name = "Hours Worked")]
-        [Range(1, 15)]
-        public decimal? Hours
+        // will be overloaded/override in the Student Worker Model
+        public virtual decimal WeeklySalary()
         {
-            get { return _hours; }
-            set
-            {
-                if (value < HOURS_LOW || value > HOURS_HIGH)
-                {
-                    _hours = 0m;
-                }
-                _hours = Convert.ToDecimal(value);
-            }
+            return 0.0m;
         }
 
-        // overloaded/override the StudentModel
-        public override decimal WeeklySalary()
-        {
-            return Convert.ToDecimal(Pay) * Convert.ToDecimal(Hours);
-        }
-
-        // override the ToString in theStudentModel
+        // ToString override
         public override string ToString()
         {
-            return base.ToString() + " Weakly Salary: " + WeeklySalary();
+            return base.ToString() + ": Name: " + _firstName + " " + _lastName;
         }
+
     }
 }
 
