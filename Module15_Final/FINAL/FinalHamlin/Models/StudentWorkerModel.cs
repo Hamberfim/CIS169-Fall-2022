@@ -49,7 +49,7 @@ namespace FinalHamlin.Models
             _hours = hours;
         }
 
-        // I'm not throwing errors - I'm also not allowing a "Zero Paycheck" since I can control what is being pass into the application from the form
+        // I'm not throwing errors 
         // setters/getters - validate form input
         [Required(ErrorMessage = "Enter a pay rate. Must be between 7.25 - 14.75.")]
         [Display(Name = "Pay Rate")]
@@ -61,7 +61,7 @@ namespace FinalHamlin.Models
             {
                 if (value < PAY_RATE_LOW || value > PAY_RATE_HIGH)
                 {
-                    _pay = 0.0m;
+                    _pay = 0m;
                 }
                 _pay = Convert.ToDecimal(value);
             }
